@@ -1,0 +1,14 @@
+{% extends 'listings/base.html' %}
+{% block content %}
+<h1>Mes groupes et leurs albums</h1>
+    <ul>
+        {% for band in bands %}
+        <li> Groupe: {{ band.name|upper }}</li>
+            <ul>
+                <li>
+                    Album: {{ band.title }}
+                </li>
+            </ul>
+        {% endfor %}
+    </ul>
+{% endblock %}
