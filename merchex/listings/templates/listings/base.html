@@ -5,7 +5,13 @@
     <link rel="stylesheet" href="{% static 'listings/styles.css' %}" />
 
     <body>
-
+        <nav>
+            <a href="{% url 'band_list' %}">Groupes</a>
+            <a href="{% url 'band_create' %}">Ajouter un groupe</a>
+            <a href="{% url 'list_list' %}">Merch</a>
+            <a href="{% url 'list_create' %}">Ajouter du merch</a>
+            <a href="{% url 'contact_us' %}">Contactez-nous</a>
+        </nav>
         {% block content %}{% endblock %}
 
     </body>

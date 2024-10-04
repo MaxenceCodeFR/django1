@@ -19,8 +19,22 @@ from django.urls import path
 from listings import views
 
 urlpatterns = [
+    # ADMIN URLS
     path('admin/', admin.site.urls),
-    path('hello/', views.hello, name='hello'),
+
+    # BAND URLS
+    path('bands/', views.band_list, name='band_list'),
+    path('bands/<int:id>/', views.band_detail, name='band_detail'),
+    path('bands/add/', views.band_create, name='band_create'),
+
+    # MERCH URLS
+    path('listings/', views.list_list, name='list_list'),
+    path('listings/<int:id>/', views.list_detail, name='list_detail'),
+    path('listings/add/', views.list_create, name='list_create'),
+
+    # MISC URLS
+    path('contact-us/', views.contact_us, name='contact_us'),
+    path('thank-you/', views.email_sent, name='email-sent'),
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
 ]

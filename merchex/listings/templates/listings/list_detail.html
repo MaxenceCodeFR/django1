@@ -1,0 +1,11 @@
+{% extends 'listings/base.html' %}
+
+{% block content %}
+ <h1> {{ list.name }}</h1>
+<h2>Type de merch : {{ list.get_type_display }}</h2>
+<h2>Vendu : {{ list.sold|yesno }}</h2>
+<h3>Année de parution : {{ list.years }}</h3>
+<p>Description : {{ list.description }} </p>
+
+<a href="{% url 'list_list' %}">Retour aux articles</a>
+{% endblock %}

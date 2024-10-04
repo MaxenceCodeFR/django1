@@ -1,0 +1,21 @@
+{% extends 'listings/base.html' %}
+{% block content %}
+<h1>Mes groupes et leurs albums</h1>
+    <ul>
+        {% for band in bands %}
+            <li><a href="{% url 'band_detail' band.id %}"> Groupe: {{ band.name|upper }}</a></li>
+            <ul>
+                <li>
+                    Album: {{ band.title }}
+                    {% for listing in band.listing_set.all %}
+                        <p>Type : {{ listing.type }}</p>
+                        <p>Description : {{ listing.description }}</p>
+                    {% empty %}
+                        <p>Aucun listing pour ce groupe.</p>
+                    {% endfor %}
+                </li>
+            </ul>
+        {% endfor %}
+    </ul>
+<a href="{% url 'band_create' %}">Ajouter un groupe</a>
+{% endblock %}
