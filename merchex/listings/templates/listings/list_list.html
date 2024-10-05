@@ -10,7 +10,7 @@
                     <p>Type de merch : {{ list.get_type_display }}</p>
                 </li>
             </ul>
-        <h3><a href="{% url 'list_detail' list.id %}">Voir le detail du merch</a></h3>
+        <h3><a href="{% url 'list_detail' list.id %}">Voir le detail du merch</a> - <a href="{% url 'list_update' list.id %}">[Modifier]</a></h3>
         {% endfor %}
         <h3><a href="{% url 'band_list' %}"> Voir tout les groupes</a></h3>
     </ul>

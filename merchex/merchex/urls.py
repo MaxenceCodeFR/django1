@@ -26,11 +26,14 @@ urlpatterns = [
     path('bands/', views.band_list, name='band_list'),
     path('bands/<int:id>/', views.band_detail, name='band_detail'),
     path('bands/add/', views.band_create, name='band_create'),
+    path('bands/<int:id>/update/', views.band_update, name='band_update'),
+    path('bands/<int:id>/delete/', views.band_delete, name='band_delete'),
 
     # MERCH URLS
     path('listings/', views.list_list, name='list_list'),
     path('listings/<int:id>/', views.list_detail, name='list_detail'),
     path('listings/add/', views.list_create, name='list_create'),
+    path('listings/<int:id>/update/', views.list_update, name='list_update'),
 
     # MISC URLS
     path('contact-us/', views.contact_us, name='contact_us'),

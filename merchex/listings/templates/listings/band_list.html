@@ -3,7 +3,7 @@
 <h1>Mes groupes et leurs albums</h1>
     <ul>
         {% for band in bands %}
-            <li><a href="{% url 'band_detail' band.id %}"> Groupe: {{ band.name|upper }}</a></li>
+            <li><a href="{% url 'band_detail' band.id %}"> Groupe: {{ band.name|upper }}</a> - <a href="{% url 'band_update' band.id %}">[Modifier]</a> </li>
             <ul>
                 <li>
                     Album: {{ band.title }}
@@ -14,6 +14,7 @@
                         <p>Aucun listing pour ce groupe.</p>
                     {% endfor %}
                 </li>
+
             </ul>
         {% endfor %}
     </ul>

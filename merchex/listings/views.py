@@ -8,12 +8,38 @@ from django.core.mail import send_mail
 
 
 def band_list(request):
+    """Renvoi un template pour afficher la liste des groupes"""
     bands = Band.objects.all()
     return render(request, 'listings/band_list.html', {'bands': bands})
 
 def band_detail(request, id):
+
+    """Renvoi un template pour afficher le detail d'un groupe"""
+
     band = Band.objects.get(id=id)
     return render(request, 'listings/band_detail.html', {'band': band})
+
+def band_update(request, id):
+    """Créer un template de formulaire pour modifier un groupe"""
+    band = Band.objects.get(id=id)
+    if request.method == 'POST':
+        form = CreateBand(request.POST, instance=band)
+        if form.is_valid():
+
+            form.save()
+
+            return redirect('band_detail', band.id)
+
+    form = CreateBand(instance=band)
+    return render(request, 'listings/band_update.html', {'form': form, 'band': band})
+
+def band_delete(request, id):
+    band = Band.objects.get(id=id)
+    if request.method == 'POST':
+        band.delete()
+        return redirect('band_list')
+
+    return render(request, 'listings/band_delete.html', {'band': band})
 
 def list_list(request):
     lists = Listing.objects.all()
@@ -33,6 +59,17 @@ def list_create(request):
         form = CreateListing()
 
     return render(request, 'listings/list_create.html', {'form': form})
+
+def list_update(request, id):
+    list = Listing.objects.get(id=id)
+    if request.method == 'POST':
+        form = CreateListing(request.POST, instance=list)
+        if form.is_valid():
+            form.save()
+            return redirect('list_list')
+    else:
+        form = CreateListing(instance=list)
+        return render(request, 'listings/list_update.html', {'form': form})
 
 def contact_us(request):
     if request.method == 'POST':
